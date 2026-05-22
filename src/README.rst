@@ -17,8 +17,8 @@ Almost all of the Olson timezones are supported.
 .. note::
 
     Projects using Python 3.9 or later should use the standard library 
-    `zoneinfo <https://docs.python.org/3/library/zoneinfo.html>`_, and third party
-    packages that work with it such as `tzdata <https://pypi.org/project/tzdata/>`_.
+    `zoneinfo <https://docs.python.org/3/library/zoneinfo.html>`_ module with
+    time zone database updates from `tzdata <https://pypi.org/project/tzdata/>`_ package.
     pytz offers no advantages beyond backwards compatibility with
     code written for earlier versions of Python.
 
