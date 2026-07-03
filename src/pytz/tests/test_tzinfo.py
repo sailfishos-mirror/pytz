@@ -670,6 +670,16 @@ class LocalTestCase(unittest.TestCase):
                 loc_time = loc_tz.localize(ambiguous_naive, is_dst=dst)
                 self.assertEqual(loc_time.strftime(fmt), expected[not dst])
 
+        # Boundary dates: localize must not raise OverflowError when the
+        # datetime is at or near the representable extremes (issue #108).
+        loc_tz = pytz.timezone('US/Pacific')
+        # datetime.max date
+        loc_time = loc_tz.localize(datetime(9999, 12, 31))
+        self.assertEqual(loc_time.date(), datetime(9999, 12, 31).date())
+        # datetime.min date
+        loc_time = loc_tz.localize(datetime(1, 1, 1))
+        self.assertEqual(loc_time.date(), datetime(1, 1, 1).date())
+
     def testNormalize(self):
         tz = pytz.timezone('US/Eastern')
         dt = datetime(2004, 4, 4, 7, 0, 0, tzinfo=UTC).astimezone(tz)
