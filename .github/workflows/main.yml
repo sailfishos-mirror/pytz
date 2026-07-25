@@ -35,7 +35,7 @@ jobs:
       - name: zdump Tests
         run: |
           python gen_tests.py
-          python test_zdump.py -vv
+          python test_zdump.py -q
 
   legacy:
     name: "Older Python 3 Releases"
